@@ -1,0 +1,34 @@
+{
+  "name": "69书吧",
+  "url": "69shu.com",
+  "version": 103,
+  "search": {
+    "url": "https://www.69shu.com/modules/article/search.php@post->searchkey=${key}",
+    "charset": "gbk",
+    "list": ".newbox > ul > li",
+    "name": "h3 > a",
+    "author": "label:nth-child(2)",
+    "cover": "a > img@attr->data-src",
+    "detail": "a:matches(点击阅读)"
+  },
+  "detail": {
+    "name": "meta[property=og:novel:book_name]@attr->content",
+    "author": "meta[property=og:novel:author]@attr->content",
+    "cover": "meta[property=og:image]@attr->content",
+    "summary": "meta[property=og:description]@attr->content@replace-><br />->",
+    "status": "meta[property=og:novel:status]@attr->content",
+    "update": "meta[property=og:novel:update_time]@attr->content",
+    "lastChapter": "meta[property=og:novel:latest_chapter_name]@attr->content",
+    "catalog": "a:matches(开始阅读)"
+  },
+  "catalog": {
+    "list": "#catalog > ul > li",
+    "orderBy": 0,
+    "name": "a",
+    "chapter": "a"
+  },
+  "chapter": {
+    "content": ".txtnav",
+    "filter": ["@h1","@div"]
+  }
+}

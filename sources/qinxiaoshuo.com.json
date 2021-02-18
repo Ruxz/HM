@@ -1,0 +1,40 @@
+{
+  "name": "亲小说",
+  "url": "qinxiaoshuo.com",
+  "version": 100,
+  "search": {
+    "url": "http://qinxiaoshuo.com/api/book/search/${key}/1",
+    "charset": "UTF-8",
+    "list": "$.Books[*]",
+    "name": "$.Book_name",
+    "author": "$.Author_name",
+    "cover": "http://static.qinxiaoshuo.com:4000/bookimg/${$.Book_id}.jpg",
+    "detail": "http://qinxiaoshuo.com/api/book/get/${$.Book_name}"
+  },
+  "detail": {
+    "name": "$.Book.Book_name",
+    "author": "$.Book.Author_name",
+    "cover": "http://static.qinxiaoshuo.com:4000/bookimg/${$.Book.Book_id}.jpg",
+    "summary": "$.Book.Book_intro",
+    "status": "$.Book.Status",
+    "update": "$.Book.Last_update_time",
+    "lastChapter": "$.Book.Last_update_chapter_name",
+    "catalog": "http://qinxiaoshuo.com/api/user/book/get/${$.Book.Book_id}@post->http://qinxiaoshuo.com/api/user/book/get/${$.Book.Book_id}"
+  },
+  "catalog": {
+    "list": "$.Volumes[*]",
+    "orderBy": 0,
+    "booklet": {
+      "name": "$.Volume_name",
+      "list": "$.Chapters[*]"
+    },
+    "name": "$.Chapter_name",
+    "chapter": "http://qinxiaoshuo.com/api/book/chapter/get/${$.Volumes[0].Book_id}/${$.Chapter_id}"
+  },
+  "chapter": {
+    "content": "$.Chapter.Chapter_content"
+  },
+  "auth": {
+    "header": "Authorization:5e0f300f6d4c1128dde3737c:1:1603935794:3c793c060d9306a28021563c6ff0590d"
+ }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "青豆小说",
+  "url": "qingdou.net",
+  "version": 100,
+  "search": {
+    "url": "https://www.qingdou.net/search.html@post->searchkey=${key}",
+    "charset": "UTF-8",
+    "list": "#alistbox",
+    "name": "h2 > a",
+    "author": "span > a",
+    "cover": "a > img",
+    "detail": "a:matches(开始阅读)"
+  },
+  "detail": {
+    "name": "meta[property=og:novel:book_name]@attr->content",
+    "author": "meta[property=og:novel:author]@attr->content",
+    "cover": ".pic > img",
+    "summary": ".intro",
+    "status": ".top > span:nth-child(3)@match->(?<=小说状态：)(.+)",
+    "update": ".top > span:nth-child(4)@match->(?<=更新时间：)(.+)",
+    "lastChapter": "meta[property=og:novel:latest_chapter_name]@attr->content"
+  },
+  "catalog": {
+    "list": "dl",
+    "orderBy": 0,
+    "booklet": {
+      "name": "dt > b",
+      "list": "dd"
+    },
+    "name": "a",
+    "chapter": "a"
+  },
+  "chapter": {
+    "content": "#content",
+    "filter": ["%喜欢.+青豆小说更新速度.+"]
+  }
+}

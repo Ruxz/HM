@@ -1,0 +1,65 @@
+{
+  "name": "萌文库",
+  "url": "kdays.net",
+  "version": 103,
+  "search": {
+    "url": "http://xs.kdays.net/search/all?w=${key}",
+    "charset": "utf-8",
+    "list": ".book",
+    "name": "h3 > a",
+    "author": "p:nth-child(3)@match->(?<=作者: )(.+)(?= /)@replace->作者:-> ",
+    "cover": ".cover-side > img",
+    "detail": "h3 > a"
+  },
+  "detail": {
+    "name": ".info-side > h2",
+    "author": ".items > li:nth-child(3) > a",
+    "cover": ".col-sm-3 > img",
+    "summary": "blockquote",
+    "status": "p.status@match->(?<=\\()(.+)(?=\\))",
+    "lastChapter": ".last-chapter > a@match->(?<=最新章节:)(.+)",
+    "catalog": "a.read-btn"
+  },
+  "catalog": {
+    "list": "#vols > .row",
+    "orderBy": 0,
+    "booklet": {
+      "name": ".info-side > h2@replace->下载->",
+      "list": ".info-side > ul > li"
+     },
+    "name": "a",
+    "chapter": "a"
+  },
+  "chapter": {
+    "content": "article > p",
+    "filter": ["@a"]
+  },
+  "rank": [
+    {
+      "title": "排行",
+      "url": "http://xs.kdays.net/list/top?type=${key}",
+      "page": 1,
+      "size": 10,
+      "categories": [{"key": "hit", "value": "点击"}, {"key": "fav", "value": "收藏"}, {"key": "like", "value": "喜欢"}],
+      "list": ".book",
+      "name": "h3 > a",
+      "author": "p > a",
+      "cover": ".cover-side > img",
+      "summary": "blockquote",
+      "detail": "h3 > a"
+    },
+    {
+      "title": "书库",
+      "url": "http://xs.kdays.net/list/all?type=${key}&order=update_time&orderBy=DESC&fword=all&size=-1&status=-1&apply=0&page=${page}",
+      "page": 1,
+      "size": 20,
+      "categories": [{"key": "0", "value": "不限"}, {"key": "1", "value": "热血"}, {"key": "2", "value": "冒险"}, {"key": "3", "value": "运动"}, {"key": "4","value": "魔幻"}, {"key": "5", "value": "武侠"}, {"key": "6", "value": "校园"}, {"key": "8", "value": "治愈"}, {"key": "9", "value": "推理"},{"key": "10", "value": "惊悚"}, {"key": "11", "value": "科幻"}, {"key": "12", "value": "社会"}, {"key": "13", "value": "GAL"}, {"key": "14", "value": "动画化"}],
+      "list": ".book",
+      "name": "h3 > a",
+      "author": "p.author@match->(?<=作者: )(.+)",
+      "cover": ".cover-side > img",
+      "summary": "blockquote",
+      "detail": "h3 > a"
+    }
+  ]
+}
